@@ -17,3 +17,7 @@ Route::post('/registra-token', 'RegistraTokenController@registra')->name('regist
 
 Route::apiResource('/readed-books', 'ReadedBookController');
 
+
+Route::get('/pippo', 'PippoController@index');
+
+Route::get('/pippo', 'PippoController@index2');
