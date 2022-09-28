@@ -5,6 +5,7 @@ WORKDIR /var/www
 RUN apk add --no-cache \
     curl \
     nginx \
+    zsh \
     php8 \
     php8-bcmath \
     php8-common\

@@ -27,6 +27,23 @@ class ReadedBookController extends ApiController
 
     public function show(Request $request, $id)
     {
-        return new ReadedBookResource(ReadedBook::firstWhere('uuid',$id));
+        $model = ReadedBook::firstWhere('uuid',$id);
+        abort_if(is_null($model),404);
+        return new ReadedBookResource();
+    }
+
+    public function update(Request $request, string $uuid)
+    {
+        $model = ReadedBook::firstWhere('uuid', $uuid);
+        $model->title = $request->get('title');
+        $model->save();
+        return new ReadedBookResource($model);
+    }
+
+    public function destroy(string $uuid)
+    {
+        $model = ReadedBook::firstWhere('uuid', $uuid);
+        $model->delete();
+        return response('',204);
     }
 }

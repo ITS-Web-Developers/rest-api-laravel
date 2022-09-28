@@ -30,7 +30,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/login', function () {
-    return Socialite::driver('google')->redirect();
+    //return Socialite::driver('google')->redirect();
+    return view('auth/login');
 })->name('login');
 
 Route::get('/auth/callback', [App\Http\Controllers\Auth\GoogleLoginCallbackController::class, 'index']);
