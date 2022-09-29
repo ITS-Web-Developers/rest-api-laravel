@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/registra-token', 'RegistraTokenController@registra')->name('registra-token');
 
-Route::apiResource('/readed-books', 'ReadedBookController');
+Route::group([
+    'middleware' => 'auth:api'
+], function (){
+    Route::apiResource('/readed-books', 'ReadedBookController');
+});
+
 
 
 Route::get('/pippo', 'PippoController@index');
